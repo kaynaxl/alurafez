@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Site</title>
+    <style>
+        /* Add some basic styling to make it look decent */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .tab {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        .tab.active {
+            background-color: #fff;
+            border-bottom: none;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation tabs -->
+    <ul class="tabs">
+        <li class="tab active"><a href="#inicio">Inicio</a></li>
+        <li class="tab"><a href="#sobre-mim">Sobre Mim</a></li>
+    </ul>
+
+    <!-- Tab contents -->
+    <div class="tab-content active" id="inicio">
+        <h1>Alura feito por Kayna</h1>
+    </div>
+    <div class="tab-content" id="sobre-mim">
+        <h1 style="font-size: 48px;">FEITO PARA O ALURA</h1>
+    </div>
+
+    <!-- JavaScript to toggle tabs -->
+    <script>
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach((tab) => {
+            tab.addEventListener('click', (e) => {
+                const target = e.target.getAttribute('href');
+                tabContents.forEach((content) => {
+                    content.classList.remove('active');
+                });
+                document.querySelector(target).classList.add('active');
+                tabs.forEach((t) => {
+                    t.classList.remove('active');
+                });
+                tab.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
